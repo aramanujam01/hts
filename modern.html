@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTS Research Project</title>
     <link rel="stylesheet" href="styles2.css">
+    <script src="https://d3js.org/d3.v4.js"></script>
   </head>
   <body>
     <div class="header">
@@ -22,17 +23,27 @@
     <h2>
       Now that we have set the basis for why the Middle East is of interest for the United States in the first place, we can start examining what the narratives and rationale behind the current perception of the Middle East are.
     </h2>
-    <h2> Most Americans view terrorism as a threat, which makes sense given the events of 9/11 and the broader global awareness of Terrorist Organizations. The general US perception of terrorism is most attached to Islamic fundemantalist terrorism with roots in the Middle East.</h2>
-    <svg id="us-threat" width="1000px" height="600px">
-    </svg>
-    <h2>
-      We have already discussed anti-american sentiment, but that alone doesn’t provide enough of a justification for terrorism. Even though the US may not think of al-Qaeda, ISIS, or the Taliban as rationale entities they have a reason for organizing and perpetrating their acts. “Terrorism, it is important to emphasize, does not arise in a vacuum. It emerges from intergroup conflict – over land or other physical resources, over control of the levers of political power, including patronage, and so on” (Shughart, 2006).
+    <h2 style="margin-bottom: 5%;"> Most Americans view terrorism as a threat, which makes sense given the events of 9/11 and the broader global awareness of Terrorist Organizations. The general US perception of terrorism is most attached to Islamic fundemantalist terrorism with roots in the Middle East.</h2>
+    <h4 style="margin-left:0;margin-bottom:2%;text-align:center;"> Perceived Threat by US Citizens (2020)</h4>
+    <svg id="my_dataviz" width="1000" height="500" style="margin-left:15%"></svg>
+    <div class="legend">
+      <span style="background-color: #6C2D2B; display: inline-block; height: 50px; width: 50px; margin-right: 10px; margin-left: 10px;"></span>
+      <span><h4>Major Threat</h4></span>
+      <span style="background-color: #99615F; display: inline-block; height: 50px; width: 50px; margin-right: 10px; margin-left: 15px;"></span>
+      <span><h4>Minor Threat</h4></span>
+      <span style="background-color: #bda9a8; display: inline-block; height: 50px; width: 50px; margin-right: 10px; margin-left: 15px;"></span>
+      <span><h4>No Threat</h4></span>
+    </div>
+    <h2 style="margin-top:5%;">
+      We have already discussed anti-american sentiment, but that alone doesn’t provide enough of a justification for terrorism. Even though the US may not think of al-Qaeda, ISIS, or the Taliban as rationale entities they have a reason for organizing and perpetrating their acts. “Terrorism, it is important to emphasize, does not arise in a vacuum. It emerges from intergroup conflict – over land or other physical resources, over control of the levers of political power, including patronage, and so on” (Shughart).
     </h2>
     <h2>
       So what are these intergroup conflicts - that lead to the formation of terrorist organizations. And what does the US have to do with this. Well I guess the first thing to note is that terrorism is not really a US problem. 
     </h2>
+    <h4 style="margin-left:0;margin-bottom:2%;text-align:center;"> US Terrorist Related Deaths Over Time </h4>
+    <svg id="my_dataviz2" width="1000" height="500" style="margin-left:15%"></svg>
     <h2>
-      Really, terrorism is more heavily rooted in fundamentalist Islam. Fundamentalism “leads its adherents to disdain above all “false Muslims”, imposters who have strayed from the true faith and, hence, merit treatment as kaffir (or kufr), unbelievers beyond the protection of the Ummah” (Shuggart, 2021).
+      Really, terrorism is more heavily rooted in fundamentalist Islam. Fundamentalism “leads its adherents to disdain above all “false Muslims”, imposters who have strayed from the true faith and, hence, merit treatment as kaffir (or kufr), unbelievers beyond the protection of the Ummah” (Shughart).
     </h2>
     <h2>
       But, where does the US get involved - even if I were to say that terrorism is not a US versus Middle East conflict that doesn’t explain the events of 9/11 which critically underpin our understanding of terrorism. 
@@ -40,17 +51,110 @@
     <h2>
       We need not look further than the the justifications that Osama Bin Laden use for his actions:
     </h2>
-    <aside class="pquote">
+    <aside class="pquote" style="margin-bottom: 5%;">
       <blockquote>
           <h2>
-            "The American imposes himself on everyone. Americans accuse our children in Palestine of being terrorists--those children, who have no weapons and have not even reached maturity. At the same time, Americans defend a country, the state of the Jews, that has a policy to destroy the future of these children."
+            "The American imposes himself on everyone. Americans accuse our children in Palestine of being terrorists--those children, who have no weapons and have not even reached maturity. At the same time, Americans defend a country, the state of the Jews, that has a policy to destroy the future of these children" (Miller).
           </h2>
       </blockquote>
   </aside>
-  <h2>
-    The crux of his argument centers around American support Israel, but more Bin Laden also mentions how “The American imposes himself on everyone”. This attitude has roots in anti-imperialism. Bin Laden also suggests that the war in Afghanistan fought during the end of the cold war did a great deal to “It cleared from Muslim minds the myth of superpowers.”
+  <div class="pixel-border">
+    <img src="img/bin-laden.png">
+    <h4> Bin Laden Interview With John Miller (1998)</h4>
+  </div>
+  <h2 style="margin-top: 5%;"">
+    The crux of his argument centers around American support Israel, but more Bin Laden also mentions how “The American imposes himself on everyone” (Miller). This attitude has roots in anti-imperialism. Bin Laden also suggests that the war in Afghanistan fought during the end of the cold war did a great deal to “It cleared from Muslim minds the myth of superpowers” (Miller).
   </h2>
-    <script src="//d3js.org/d3.v6.min.js"></script>
+  <h2 style="margin-bottom: 5%;">
+    The neverending conflict that we observe in the Middle East is not strictly tied to the events of 9/11. The Gulf War sets the stage for the last three decades of US military involvement in the Middle East. After Saddam Hussein invaded Kuwait the US with the support of many other nations took swift and unanimous action with protection of oil interests being a motivating factor.
+  </h2>
+  <div class="pixel-border">
+    <img src="img/tank.png" style="width:500px;">
+    <h4> Iraqi Tank Resting Near Oil Fields</h4>
+  </div>
+  <h2 style="margin-top:5%">
+    However, the conflict ramped up post 9/11. US foriegn policy dramatically shifted with the Bush Doctrine advocating for preventive and pre-emptive war to combat rouge states, anti-american actors, and everything in between. The Bush Doctrine is felt in the overthrow of Saddam Hussein and the invasion of Afghanistan. US Foriegn policy dating back to World War II had been strictly isolationist,
+    but in the face of the imminent threats of terrorism the Bush Doctrine shifted US policy towards more proactive measures that are felt in the Middle East till this day.
+  </h2>
+  <img src="img/footer_img.png" id="footer" alt="Footer Pyramids">
+  <script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 10, right: 30, bottom: 40, left: 10},
+        width = 1000 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    // Parse the Data
+    d3.csv("data/threats.csv", function(data) {
+    
+      // List of subgroups = header of the csv files = top10, middle40, bottom50
+      var subgroups = data.columns.slice(1)
+    
+      // List of groups = region (Western Europe, United States, etc.)
+      var groups = d3.map(data, function(d){return(d.Threat)}).keys();
+
+      groups = groups.filter(function (el) {
+        return el != "";
+      });
+    
+      // Add X axis
+      var x = d3.scaleBand()
+          .domain(groups)
+          .range([0, width])
+          .padding([0.2])
+      svg.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .attr("class", 'x-label')
+          .call(d3.axisBottom(x).tickSizeOuter(0));
+    
+      // Add Y axis
+      var y = d3.scaleLinear()
+          .domain([0, 100])
+          .range([ height, 0 ]);
+      svg.append("g")
+          .call(d3.axisLeft(y));
+    
+      // color palette = one color per subgroup
+      var color = {
+        Major_Threat: "#6C2D2B",
+        Minor_Threat: "#99615F",
+        No_Threat: "#bda9a8"
+      }
+    
+      //stack the data? --> stack per subgroup
+      var stackedData = d3.stack()
+          .keys(subgroups)
+          (data)
+    
+      // Show the bars
+      svg.append("g")
+        .selectAll("g")
+        // Enter in the stack data = loop key per key = group per group
+        .data(stackedData)
+        .enter().append("g")
+          .attr("fill", function(d) { 
+            console.log(d.key)
+            return color[d.key]; 
+          })
+          .selectAll("rect")
+          // enter a second time = loop subgroup per subgroup to add all rectangles
+          .data(function(d) { return d; })
+          .enter().append("rect")
+            .attr("x", function(d) { return x(d.data.Threat); })
+            .attr("y", function(d) { return y(d[1]); })
+            .attr("height", function(d) { return y(d[0]) - y(d[1]); })
+            .attr("width",x.bandwidth())
+    })    
+    </script>
     <script src="js/modern.js"></script>
   </body>
 </html>
