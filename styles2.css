@@ -13,6 +13,12 @@ body {
   justify-content: space-between;
 }
 
+#oil-bg {
+  z-index: -1;
+  position: absolute;
+  top:0;
+}
+
 #footer {
   max-width: 100%;
   position: relative;
