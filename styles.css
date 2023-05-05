@@ -31,6 +31,10 @@ h2 {
   color: #6C2D2B;
 }
 
+#helpful {
+  animation: blinker 1s linear infinite;
+}
+
 #cloud_1, #cloud_2, #cloud_3, #cloud_4 {
   width: 300px;
   position: absolute;
