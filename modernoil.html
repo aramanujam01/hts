@@ -30,17 +30,59 @@
       <img src="/img/hamas.png" style="border-radius: 12px; width:600px;">
       <h4> Hamad International Airport in Doha, Qatar</h4>
     </div>
-    <h2>
+    <h2 style="margin-bottom:5%">
       To an extent this is true, the wealth in the Middle East is immense. However, a corrolary of this is vast wealth disparity:
     </h2>
-    <svg id="my_dataviz" width="1000" height="700" style="margin-left:12%"></svg>
+    <h4 style="margin-left:0;margin-bottom:2%;text-align:center;"> Wealth Contribution by Income Bracket in Various Regions</h4>
+    <svg id="my_dataviz" width="1000" height="500" style="margin-left:15%"></svg>
+    <div class="legend">
+      <span style="background-color: #6C2D2B; display: inline-block; height: 50px; width: 50px; margin-right: 10px; margin-left: 10px;"></span>
+      <span><h4>Bottom 50%</h4></span>
+      <span style="background-color: #99615F; display: inline-block; height: 50px; width: 50px; margin-right: 10px; margin-left: 15px;"></span>
+      <span><h4>Middle 40%</h4></span>
+      <span style="background-color: #bda9a8; display: inline-block; height: 50px; width: 50px; margin-right: 10px; margin-left: 15px;"></span>
+      <span><h4>Top 10%</h4></span>
+    </div>
+    <h2 style="margin-top:5%">
+      This vast wealth disparity can in some part be explained by the dependence of oil states on migrant workers.
+    </h2>
+    <aside class="pquote">
+      <blockquote>
+          <h2>
+            “Somewhere between 50 and 90% of private sector workers in the
+            Gulf are foreigners. There are 6 million foreigners
+            among Saudi Arabia’s 18 million residents, and
+            foreigners are 98% of manufacturing workers,
+            97% of construction workers, and 93% of the
+            service sector.” (Karl).
+          </h2>
+      </blockquote>
+    </aside>
+    <h2> Much like the society discussed in the analysis of a Kuwaiti Pearl Diver, oil states produce a rigid social hierarchy. The only difference being the allure of oil wealth providing the facade of a social mobility.</h2>
+    <h2> The resource curse is real. The contract Middle Eastern oil states have made with the resource is binding, these states simply cannot subsist off of taxation alone. However, many states in the region are creating plans for a post-rentier future. </h2>
+    <h2 style="margin-bottom: 5%;"> One interesting way nations are moving away from oil-dependency is through sports diplomacy. One way that sports diplomacy can help achieve this goal is by promoting tourism and foreign investment in Middle Eastern countries through major international sports events. Hosting events such as the FIFA World Cup or the Olympics can attract millions of visitors and generate significant revenue for the host country's economy, creating jobs and investment opportunities outside the oil sector (Ettinger).</h2>
+    <div class="img-slides" style="display: flex; justify-content:center; margin:auto;">
+      <div class="pixel-border" style="height:250px;margin-right:2%;">
+        <img src="/img/jeddah.png" style="border-radius: 12px; width:300px;">
+        <h4> Jeddah F1 Race Run as Oil Fire Burns</h4>
+      </div>
+      <div class="pixel-border" style="height:250px;margin-right:2%; margin-left:2%;">
+        <img src="/img/qatar.png" style="border-radius: 12px; width:300px;">
+        <h4> Stadium Constructed For Qatar World Cup</h4>
+      </div>s
+      <div class="pixel-border" style="height:250px;margin-left:2%;">
+        <img src="/img/ronaldo.png" style="border-radius: 12px; width:300px;">
+        <h4> Ronaldo Joins Al-Nassr</h4>
+      </div>
+    </div>
+    <h2 style="margin-top:5%;"> Ronaldo alone isn't going to provide a post-Rentier future for Saudi Arabia. However, these actions shows the collective aims of the nations to develop past oil. Regardless, oil is the blessing and curse that shapes much of the economic, social, and political development of these nations today.</h2>
     <img src="img/footer_img.png" id="footer" alt="Footer Pyramids">
     <script>
 
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 20, left: 50},
+var margin = {top: 10, right: 30, bottom: 40, left: 50},
     width = 1000 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+    height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -67,6 +109,7 @@ d3.csv("data/wealth.csv", function(data) {
       .padding([0.2])
   svg.append("g")
       .attr("transform", "translate(0," + height + ")")
+      .attr("class", 'x-label')
       .call(d3.axisBottom(x).tickSizeOuter(0));
 
   // Add Y axis

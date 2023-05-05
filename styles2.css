@@ -13,6 +13,11 @@ body {
   justify-content: space-between;
 }
 
+.tick {
+  font-family: 'VT323', monospace;
+  font-size: 2em;
+}
+
 #oil-bg {
   z-index: -1;
   position: absolute;
@@ -70,6 +75,19 @@ h2 {
 
 .pixel-border:hover {
   filter: none;
+}
+
+.legend {
+  padding-left: 2%;
+  padding-right: 2%;
+  margin: auto;
+  flex-direction: row;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: fit-content;
 }
 
 .pixel-border {
