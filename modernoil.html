@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTS Research Project</title>
     <link rel="stylesheet" href="styles2.css">
+    <script src="https://d3js.org/d3.v4.js"></script>
   </head>
   <body>
     <div class="header">
@@ -20,7 +21,7 @@
       </div>
     </div>
     <h2>
-      The growing cliche around the abundance of natural resources is the “paradox of plenty” or “resource curse”. Many believe that oil dependent countries “are among the most economically troubled, the most authoritarian, and the most conflict-ridden states in the world today”. This theory makes sense when you consider that “resource curse theory claims that resource abundance provides both finance and motive for armed conflict”.
+      The growing cliche around the abundance of natural resources is the “paradox of plenty” or “resource curse”. Many believe that oil dependent countries “are among the most economically troubled, the most authoritarian, and the most conflict-ridden states in the world today” (Karl & Gary). This theory makes sense when you consider that “resource curse theory claims that resource abundance provides both finance and motive for armed conflict” (Ross).
     </h2>
     <h2>
       For an American audience its hard to characterize oil wealth in the Middle East as a curse especially when we are confronted with images such as this:
@@ -29,7 +30,85 @@
       <img src="/img/hamas.png" style="border-radius: 12px; width:600px;">
       <h4> Hamad International Airport in Doha, Qatar</h4>
     </div>
-    To an extend
+    <h2>
+      To an extent this is true, the wealth in the Middle East is immense. However, a corrolary of this is vast wealth disparity:
+    </h2>
+    <svg id="my_dataviz" width="1000" height="700" style="margin-left:12%"></svg>
     <img src="img/footer_img.png" id="footer" alt="Footer Pyramids">
+    <script>
+
+// set the dimensions and margins of the graph
+var margin = {top: 10, right: 30, bottom: 20, left: 50},
+    width = 1000 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("#my_dataviz")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Parse the Data
+d3.csv("data/wealth.csv", function(data) {
+
+  // List of subgroups = header of the csv files = top10, middle40, bottom50
+  var subgroups = data.columns.slice(1)
+
+  // List of groups = region (Western Europe, United States, etc.)
+  var groups = d3.map(data, function(d){return(d.Region)}).keys()
+
+  // Add X axis
+  var x = d3.scaleBand()
+      .domain(groups)
+      .range([0, width])
+      .padding([0.2])
+  svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).tickSizeOuter(0));
+
+  // Add Y axis
+  var y = d3.scaleLinear()
+      .domain([0, 100])
+      .range([ height, 0 ]);
+  svg.append("g")
+      .call(d3.axisLeft(y));
+
+  // color palette = one color per subgroup
+  var color = {
+    Bottom_50: "#6C2D2B",
+    Middle_40: "#99615F",
+    Top_10: "#bda9a8"
+  }
+
+  //stack the data? --> stack per subgroup
+  var stackedData = d3.stack()
+      .keys(subgroups)
+      (data)
+
+  // Show the bars
+  svg.append("g")
+    .selectAll("g")
+    // Enter in the stack data = loop key per key = group per group
+    .data(stackedData)
+    .enter().append("g")
+      .attr("fill", function(d) { 
+        console.log(d.key)
+        return color[d.key]; 
+      })
+      .selectAll("rect")
+      // enter a second time = loop subgroup per subgroup to add all rectangles
+      .data(function(d) { return d; })
+      .enter().append("rect")
+        .attr("x", function(d) { return x(d.data.Region); })
+        .attr("y", function(d) { return y(d[1]); })
+        .attr("height", function(d) { return y(d[0]) - y(d[1]); })
+        .attr("width",x.bandwidth())
+})
+
+      
+      </script>
   </body>
 </html>
