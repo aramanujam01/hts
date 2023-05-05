@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTS Research Project</title>
+    <link rel="stylesheet" href="styles2.css">
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1> Black Gold </h1>
+      <div class="buttons">
+        <div class="pixel-border" id="prev" onclick="window.location.href = '/transition.html'">
+          <h3> << </h3>
+        </div>
+        <div class="pixel-border" id="next" onclick="window.location.href = '/coldwar.html'">
+          <h3> >> </h3>
+        </div>
+      </div>
+    </div>
+    <h2>
+      Nobody really needs an executive summary about what oil is, or why it’s important. Oil runs the world for better or worse. The car you drive to work, the Amazon purchase you made last night, and the plastic that you used to put those leftovers away are all a product of oil. And we all know that the Middle East is important to oil, but how important:
+    </h2>
+    <svg id="my_dataviz" width="1000" height="700" style="margin-left:10%"></svg>
+    <h3 style="text-align:center; margin-bottom: 5%;"> Countries with atleast 90 billion reserve oil barrels</h3>
+    <h2> 
+      Oil has not always been a driving factor in the Middle East. In fact there is a definite transition from oil to non-oil in most of these states. Oil states in the Middle East are classified as Rentier states. Rentier States are states that derive most of their income from a form of rent (non tax related income).
+    </h2>
+    <aside class="pquote">
+      <blockquote>
+          <h2>
+            “As of 2010, oil exports accounted for 90 percent of Saudi Arabia's revenue, 94 percent of Kuwait's, and 95 percent of Abu Dhabi's. The same year, oil exports accounted for 85 percent of Iraq's revenue” (Gelvin).
+          </h2>
+      </blockquote>
+  </aside>
+  <h2>
+    The effects of oil are felt by every state in the region, oil shapes the way people in this region live and the policy these states enact.
+  </h2>
+  <aside class="pquote">
+    <blockquote>
+        <h2>
+          “access to rent has sustained governments in the region and has given them an unprecedented ability to control and direct their states. What this means for the future of the region is, however, controversial. Some political scientists argue that an overdependence upon rent is actually the
+          Achilles heel of Middle Eastern governments.” (Gelvin).          
+        </h2>
+    </blockquote>
+  </aside>
+
+    <img src="img/footer_img.png" id="footer" alt="Footer Pyramids">
+    <script>
+
+    // The svg
+    var svg = d3.select("svg"),
+        width = +svg.attr("width"),
+        height = +svg.attr("height");
+    
+    // Map and projection
+    var projection = d3.geoNaturalEarth1()
+        .scale(width / 1.3 / Math.PI)
+        .translate([width / 2, height / 2])
+    
+    // Load external data and boot
+    d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
+    
+        console.log(data);
+        // Draw the map
+        svg.append("g")
+            .selectAll("path")
+            .data(data.features)
+            .enter().append("path")
+                .attr("fill", function(d) {
+                  const countries = ["Venezuela", "Canada", "Iran", "Iraq", "Kuwait", "United Arab Emirates", "Saudi Arabia"];
+                  if (countries.includes(d.properties.name)) {
+                    return "#6C2D2B";
+                  }
+                  return "orange";
+                })
+                .attr("d", d3.geoPath()
+                    .projection(projection)
+                )
+                .style("stroke", "gray")
+    })
+    
+    </script>
+  </body>
+</html>
